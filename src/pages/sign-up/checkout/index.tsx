@@ -22,7 +22,7 @@ const SignUpCheckoutPage: React.FC<SignUpCheckoutPageProps> = () => {
 				<div className="flex flex-col w-full px-2 md:px-0 md:w-3/5 mt-6">
 					{Object.keys(selection).map(key => {
 						return (
-							<div className="flex justify-between items-start border-b border-gray-300 my-6">
+							<div key={key} className="flex justify-between items-start border-b border-gray-300 my-6">
 									<div className="flex flex-col pb-5 text-sm">
 										<p className="uppercase font-bold">Growth Faculty - {key}</p>
 										<p className="text-xs"><span className="font-bold">Qty:</span> {selection[key].qty}</p>
