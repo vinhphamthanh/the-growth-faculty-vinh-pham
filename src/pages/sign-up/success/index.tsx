@@ -16,7 +16,7 @@ const SignUpSuccessPage: React.FC<SignUpSuccessPageProps> = () => {
 	return (
 		<main className="w-full flex items-center py-5 justify-center">
 			<div className="flex flex-col justify-center items-center px-3 md:px-0 w-full md:w-3/5 p-6">
-				<p className="w-full text-2xl md:text-4xl uppercase font-bold text-center my-3">Thank you for your payment!</p>
+				<p className="w-full text-2xl md:text-3xl uppercase font-bold text-center my-3">Thank you for your payment!</p>
 				<p className="w-full px-3 md:px-0 md:w-3/4 text-center py-6">We have sent an email verification to <span
 					className="font-bold"
 				>{email}</span> to verify your account.</p>

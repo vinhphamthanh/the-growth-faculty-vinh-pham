@@ -27,7 +27,7 @@ const HomePage: React.FC<HomePageProps> = () => {
 		<main className="w-full flex items-center py-5 justify-center mx-auto">
 			<form className="flex-col justify-center items-center w-full md:w-3/5 p-6">
 				<div className="flex flex-col w-full md:w-1/2 justify-center items-center mx-auto">
-					<h1 className="font-bold uppercase text-3xl my-6 text-center">Let's get started</h1>
+					<h1 className="font-bold uppercase text-2xl md:text-3xl my-6 text-center">Let's get started</h1>
 					<input
 						className="w-full my-3 p-2 border border-gray-300 rounded-lg" placeholder="Email address"
 						onChange={handleChange}

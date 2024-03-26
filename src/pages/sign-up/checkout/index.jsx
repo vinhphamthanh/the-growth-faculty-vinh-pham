@@ -17,7 +17,7 @@ const SignUpCheckoutPage = () => {
 	return (
 		<main className="w-full flex items-center py-5 justify-center">
 			<div className="flex flex-col justify-center items-center w-full md:w-1/2 p-6">
-				<h1 className="font-bold uppercase text-2xl md:text-4xl my-6 text-center">Checkout & Payment</h1>
+				<h1 className="font-bold uppercase text-2xl md:text-3xl my-6 text-center">Checkout & Payment</h1>
 				<div className="flex flex-col w-full px-2 md:px-0 md:w-3/5 mt-6">
 					{Object.keys(selection).map(key => {
 						return (
