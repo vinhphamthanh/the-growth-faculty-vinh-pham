@@ -1,14 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '@/store';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
 	email: '',
 	selection: {
 		club: { qty: 0, cost: 0 },
 		premium: { qty: 0, cost: 0 },
-	}
-}
-
+	},
+};
 
 const slice = createSlice({
 	name: 'auth',
@@ -20,12 +19,9 @@ const slice = createSlice({
 		confirm(state, action) {
 			state.selection = action.payload;
 		},
-		checkout(state, action) {
+	}),
+});
 
-		}
-	})
-})
-
-export const authSelector = (state: RootState) => state.auth
+export const authSelector = (state: RootState) => state.auth;
 export const { logIn, confirm } = slice.actions;
-export const { reducer: authReducer } = slice
+export const { reducer: authReducer } = slice;
