@@ -57,7 +57,7 @@ const SignUpHowManyMembershipsPage: React.FC<
 	return (
 		<main className="w-full flex items-center py-5 justify-center">
 			<form className="flex-col justify-center items-center w-full md:w-2/5 p-6">
-				<p className="w-full px-6 md:px-0 text-xl md:text-3xl uppercase font-bold text-center">How many memberships do you need</p>
+				<p className="w-full px-6 md:px-0 text-xl md:text-3xl uppercase font-bold text-center">How many memberships do you need?</p>
 				<div className="w-full border-b border-b-gray-300 py-5">
 					<div className="w-full flex justify-between items-center py-3">
 						<p className="font-semibold pr-3 md:font-bold w-1/4">Number of Club Members</p>

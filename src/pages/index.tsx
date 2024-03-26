@@ -29,7 +29,7 @@ const HomePage: React.FC<HomePageProps> = () => {
 				<div className="flex flex-col w-full md:w-1/2 justify-center items-center mx-auto">
 					<h1 className="font-bold uppercase text-3xl my-6 text-center">Let's get started</h1>
 					<input
-						className="w-full my-3 p-2 border-2 border-gray-300 rounded-lg" placeholder="Email address"
+						className="w-full my-3 p-2 border border-gray-300 rounded-lg" placeholder="Email address"
 						onChange={handleChange}
 					/>
 					<button
