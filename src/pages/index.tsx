@@ -1,10 +1,38 @@
 import { useRouter } from "next/router";
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { logIn, authSelector } from '@/store/slices/auth';
 
 export type HomePageProps = {};
 
+const delay = () => new Promise(resolve => setTimeout(resolve, 5000))
+
 const HomePage: React.FC<HomePageProps> = () => {
   const router = useRouter();
+	const dispatch = useDispatch()
+	const { isAuthenticated } = useSelector(authSelector)
+	const [loading, setLoading] = useState(false)
 
+	useEffect(() => {
+		if (isAuthenticated) {
+			router.push('/sign-up/how-many-memberships')
+		}
+	}, [isAuthenticated]);
+	const handleLogin = async () => {
+		try {
+			setLoading(true);
+			await delay()
+			dispatch(logIn({
+				name: 'Vinh',
+				isConfirmed: true,
+				occupation: 'dev',
+			}))
+		} catch (e) {
+
+		} finally {
+			setLoading(false);
+		}
+	}
   return (
     <main>
       {/* TODO: This could be removed */}
@@ -32,6 +60,9 @@ const HomePage: React.FC<HomePageProps> = () => {
         >
           Click here to test your navigation
         </button>
+				<div className="my-3">
+					{loading ? <div className="loader" /> : (<button className="border border-orange-400 px-5 py-1 rounded-xl" onClick={handleLogin}>LOG IN</button>)}
+				</div>
       </div>
     </main>
   );

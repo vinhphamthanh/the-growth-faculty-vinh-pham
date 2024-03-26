@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { Suspense } from "react";
+import Products from '@/component/products';
 
 export type HowManyMembershipsPageProps = {};
 
@@ -21,6 +22,9 @@ const SignUpHowManyMembershipsPage: React.FC<
         >
           Proceed to Checkout
         </button>
+				<Suspense fallback={<div>Loading products...</div>}>
+					{/*<Products />*/}
+				</Suspense>
       </div>
     </main>
   );

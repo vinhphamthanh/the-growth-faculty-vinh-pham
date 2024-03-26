@@ -1,9 +1,18 @@
 import Link from "next/link";
 import React from "react";
+import { useRouter } from 'next/router';
+import { useAppDispatch } from '@/lib/storeHooks';
+import { logOut } from '@/store/slices/auth';
 
 export type SignUpSuccessPageProps = {};
 
 const SignUpSuccessPage: React.FC<SignUpSuccessPageProps> = () => {
+	const router = useRouter()
+	const dispatch = useAppDispatch()
+	const handleLogOut = () => {
+		dispatch(logOut())
+		router.replace('/')
+	}
   return (
     <main>
       {/* TODO: This could be removed */}
@@ -14,6 +23,7 @@ const SignUpSuccessPage: React.FC<SignUpSuccessPageProps> = () => {
         <Link className="text-orange-400 underline mt-8" href="/">
           Go to Home
         </Link>
+				<button className="px-2 py-8" onClick={handleLogOut}>LogOut</button>
       </div>
     </main>
   );
