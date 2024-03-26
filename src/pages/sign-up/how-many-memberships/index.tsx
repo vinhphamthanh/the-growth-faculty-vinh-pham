@@ -45,7 +45,8 @@ const SignUpHowManyMembershipsPage: React.FC<
 		});
 	};
 
-	const handleSelect = () => {
+	const handleSelect = (event: any) => {
+		event.preventDefault();
 		dispatch(confirm(selection));
 		router.push('/sign-up/checkout');
 	};
@@ -55,7 +56,7 @@ const SignUpHowManyMembershipsPage: React.FC<
 
 	return (
 		<main className="w-full flex items-center py-5 justify-center">
-			<div className="flex-col justify-center items-center w-full md:w-2/5 p-6">
+			<form className="flex-col justify-center items-center w-full md:w-2/5 p-6">
 				<p className="w-full px-6 md:px-0 text-xl md:text-3xl uppercase font-bold text-center">How many memberships do you need</p>
 				<div className="w-full border-b border-b-gray-300 py-5">
 					<div className="w-full flex justify-between items-center py-3">
@@ -75,12 +76,13 @@ const SignUpHowManyMembershipsPage: React.FC<
 				</div>
 				<div className="flex justify-center py-6">
 					<button
+						type="submit"
 						disabled={disableNext}
 						className={`my-5 rounded-3xl text-xs border ${disableNext ? 'bg-gray-300' : 'bg-orange-400'} py-2 text-white uppercase font-bold w-3/4 md:w-1/2`}
 						onClick={handleSelect}
 					>Next</button>
 				</div>
-			</div>
+			</form>
     </main>
 	);
 };
