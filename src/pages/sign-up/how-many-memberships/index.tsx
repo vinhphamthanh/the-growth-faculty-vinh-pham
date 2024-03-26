@@ -1,6 +1,14 @@
 import { useRouter } from "next/router";
-import React, { Suspense } from "react";
-import Products from '@/component/products';
+import React, { useState } from "react";
+import { useDispatch } from 'react-redux';
+import Data from '../../../lib/mock.json'
+import { confirm } from '@/store/slices/auth'
+import { getTotal } from '@/lib/utils';
+
+const MEMS = {
+	CLUB: 'Club',
+	PREM: 'Premium'
+}
 
 export type HowManyMembershipsPageProps = {};
 
@@ -8,24 +16,67 @@ const SignUpHowManyMembershipsPage: React.FC<
   HowManyMembershipsPageProps
 > = () => {
   const router = useRouter();
+	const dispatch = useDispatch()
+	const [selection, setSelection] = useState({
+		[MEMS.CLUB]: { qty: 0, cost: 0 },
+		[MEMS.PREM]: { qty: 0, cost: 0 },
+	})
+
+	const handleSelectMem = (e) => {
+		const { target: { value, name }} = e
+		const numVal = Number(value);
+		const type = Data.find(item => item.plan_id === name)
+
+		if (!value) {
+			setSelection(prevState => {
+				return ({
+					...prevState,
+					[name]: { qty: 0, cost: 0 },
+				})
+			})
+		}
+		type?.tiered_prices?.map(item => {
+			if (numVal >= item.starting_unit && numVal <= item.ending_unit) {
+				setSelection((prevState) => ({
+					...prevState,
+					[name]: { qty: numVal, cost: numVal * item.price },
+				}))
+			}
+		})
+	}
+
+	const handleSelect = () => {
+		dispatch(confirm(selection))
+		router.push('/sign-up/checkout')
+	}
+
+	const total = getTotal(selection)
+	const disableNext = total === 0;
 
   return (
-    <main>
-      {/* TODO: This could be removed */}
-      <div className="flex flex-col bg-gray-900 w-full min-h-screen text-white pt-12 items-center">
-        <h1 className="font-semibold text-6xl text-center">
-          You have successfully navigated!
-        </h1>
-        <button
-          className="text-orange-400 underline mt-8"
-          onClick={() => router.push("/sign-up/checkout")}
-        >
-          Proceed to Checkout
-        </button>
-				<Suspense fallback={<div>Loading products...</div>}>
-					{/*<Products />*/}
-				</Suspense>
-      </div>
+    <main className="w-full flex items-center py-5 justify-center">
+			<div className="flex-col justify-center items-center w-full md:w-2/5 p-6">
+				<p className="w-full px-6 md:px-0 text-xl md:text-3xl uppercase font-bold text-center">How many memberships do you need</p>
+				<div className="w-full border-b border-b-gray-300 py-5">
+					<div className="w-full flex justify-between items-center py-3">
+						<p className="font-semibold pr-3 md:font-bold w-1/4">Number of Club Members</p>
+						<input name="Club" className="border border-gray-300 rounded-md w-3/5 p-2" onChange={handleSelectMem} />
+						<p className="font-bold w-1/5 text-right">${selection[MEMS.CLUB].cost}</p>
+					</div>
+					<div className="w-full flex justify-between items-center py-3">
+						<p className="font-semibold pr-3 md:font-bold w-1/4">Number of Premium Members</p>
+						<input name="Premium" className="border border-gray-300 rounded-md w-3/5 p-2" onChange={handleSelectMem} />
+						<p className="font-bold w-1/5 text-right">${selection[MEMS.PREM].cost}</p>
+					</div>
+				</div>
+				<div className="flex justify-between py-3">
+					<p className="font-bold uppercase">Total</p>
+					<p className="font-bold text-orange-400 text-2xl">${total} AUD</p>
+				</div>
+				<div className="flex justify-center py-6">
+					<button disabled={disableNext} className={`my-5 rounded-3xl text-xs border ${disableNext ? 'bg-gray-300' : 'bg-orange-400'} py-2 text-white uppercase font-bold w-3/4 md:w-1/2`} onClick={handleSelect}>Next</button>
+				</div>
+			</div>
     </main>
   );
 };

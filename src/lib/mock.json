@@ -1,0 +1,46 @@
+[
+  {
+    "currency": "AUD",
+    "id": "8b91-16be-fcd9-13d6-8e33-862a-444c-215c",
+    "plan_id": "Premium",
+    "tiered_prices": [
+      {
+        "price": 998,
+        "starting_unit": 1,
+        "ending_unit": 9
+      },
+      {
+        "price": 948,
+        "starting_unit": 10,
+        "ending_unit": 24
+      },
+      {
+        "price": 923,
+        "starting_unit": 25,
+        "ending_unit": 20000
+      }
+    ]
+  },
+  {
+    "currency": "AUD",
+    "id": "fc68-7b0b-5420-4595-038c-bf1b-40ae-d988",
+    "plan_id": "Club",
+    "tiered_prices": [
+      {
+        "price": 498,
+        "starting_unit": 1,
+        "ending_unit": 9
+      },
+      {
+        "price": 448,
+        "starting_unit": 10,
+        "ending_unit": 24
+      },
+      {
+        "price": 423,
+        "starting_unit": 25,
+        "ending_unit": 20000
+      }
+    ]
+  }
+]

@@ -1,38 +1,31 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '@/store';
 
-interface User {
-	name: string;
-	occupation: string;
-	isConfirmed: boolean;
+const initialState = {
+	email: '',
+	selection: {
+		club: { qty: 0, cost: 0 },
+		premium: { qty: 0, cost: 0 },
+	}
 }
 
-interface Auth {
-	isAuthenticated: boolean;
-	user: User | null;
-}
-
-const initialState: Auth = {
-	isAuthenticated: false,
-	user: null
-}
 
 const slice = createSlice({
 	name: 'auth',
 	initialState,
 	reducers: build => ({
-		logIn(state, action: PayloadAction<User | null>) {
-			state.isAuthenticated = true;
-			state.user = action.payload;
+		logIn(state, action) {
+			state.email = action.payload;
 		},
-		logOut(state) {
-			state.isAuthenticated = false;
-			state.user = null;
+		confirm(state, action) {
+			state.selection = action.payload;
+		},
+		checkout(state, action) {
+
 		}
 	})
 })
 
 export const authSelector = (state: RootState) => state.auth
-export const { logIn, logOut } = slice.actions;
+export const { logIn, confirm } = slice.actions;
 export const { reducer: authReducer } = slice
