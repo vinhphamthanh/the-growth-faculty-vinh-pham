@@ -1,0 +1,16 @@
+name: PUSH TO GITHUB
+run-name: List all the file in side the github workspace
+on: [push]
+jobs:
+  Show-up-files:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Job was automatically triggered by ${{ github.event_name }} event."
+      - run: echo "This job is now running ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "Branch name ${{ github.ref }} and your repository is ${{ github.repository }}"
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+      - run: echo "Repository ${{ github.repository }} has been cloned!"
+      - name: List file in the repository
+        run: |
+          ls ${{ github.workspace }}
