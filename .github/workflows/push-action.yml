@@ -1,5 +1,5 @@
-name: PUSH TO GITHUB
-run-name: List all the file in side the github workspace
+name: PUSH TO GITHUB # Workflow name
+run-name: List all the file in side the github workspace # Running name
 on: [push]
 jobs:
   Show-up-files:
