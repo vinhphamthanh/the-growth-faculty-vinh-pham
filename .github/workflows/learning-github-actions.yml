@@ -3,33 +3,36 @@ run-name: Discover bat version
 on: [push]
 
 jobs:
-  DISCOVERY-BAT-VER:
+  Job1-and-1:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-        working-directory: ./utils
+#    defaults:
+#      run:
+#        shell: bash
+#        working-directory: ./utils
     steps:
       - name: Check out branch
         uses: actions/checkout@v4
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+#      - name: Set up Node
+#        uses: actions/setup-node@v4
+#        with:
+#          node-version: '20'
       - name: Check repo status
         run: |
           ls ${{ github.workspace }}
           echo "${{ github.workspace }} is the working space. Check defaults"
           echo "List all file in the workspace"
-      - name: Run script before others
-        run: |
-          ./greetings.sh
-          ./yahoo.sh
-      - run: npm install -g bats
-      - run: bats -v
+#      - name: Run script before others
+#        run: |
+#          ./greetings.sh
+#          ./yahoo.sh
+#      - run: npm install -g bats
+#      - run: bats -v
 
-  PARALELL-JOB:
+  Job2-in-PARALELL:
     runs-on: ubuntu-latest
     steps:
-      - name: Just check the windows runner
-        uses: actions/checkout@v4
+      - name: Run script with variable
+        run: |
+          echo "${{ process.env.TEST_ENV }} "
+        env:
+          TEST_ENV: apply-2.0-for-test
