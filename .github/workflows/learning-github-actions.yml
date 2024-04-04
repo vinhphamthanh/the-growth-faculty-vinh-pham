@@ -10,6 +10,9 @@ jobs:
         shell: bash
         working-directory: ./utils
     steps:
+      - name: Check repo status
+        run: |
+          echo "${{ github.workspace }} is the working space. Check defaults"
       - name: Run script before others
         run: |
           ./utils/greetings.sh
