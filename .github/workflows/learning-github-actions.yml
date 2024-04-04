@@ -5,7 +5,14 @@ on: [push]
 jobs:
   DISCOVERY-BAT-VER:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./utils
     steps:
+      - name: Run script before others
+        run: |
+          ./greetings.sh
+          ./yahoo.sh
       - name: Check out branch
         uses: actions/checkout@v4
       - name: Set up Node
