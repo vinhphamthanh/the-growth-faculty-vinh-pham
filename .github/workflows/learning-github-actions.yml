@@ -33,7 +33,6 @@ jobs:
     steps:
       - name: Run script with variable
         run: |
-          echo "${{ ci }} "
           echo "${{ github.action }} "
           echo "${{ github.action_path }} "
           echo "${{ github.actor }} "
