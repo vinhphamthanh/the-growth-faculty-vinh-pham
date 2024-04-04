@@ -23,8 +23,8 @@ jobs:
           echo "List all file in the workspace"
       - name: Run script before others
         run: |
-          ./utils/greetings.sh
-          ./utils/yahoo.sh
+          ./greetings.sh
+          ./yahoo.sh
       - run: npm install -g bats
       - run: bats -v
 
