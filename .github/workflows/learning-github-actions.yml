@@ -12,8 +12,8 @@ jobs:
     steps:
       - name: Run script before others
         run: |
-          ./greetings.sh
-          ./yahoo.sh
+          ./utils/greetings.sh
+          ./utils/yahoo.sh
       - name: Check out branch
         uses: actions/checkout@v4
       - name: Set up Node
