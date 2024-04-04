@@ -16,7 +16,7 @@ jobs:
       - run: bats -v
 
   PARALELL-JOB:
-    runs-on: window-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Just check the windows runner
         uses: actions/checkout@v4
