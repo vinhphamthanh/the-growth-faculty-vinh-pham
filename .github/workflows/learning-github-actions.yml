@@ -33,14 +33,9 @@ jobs:
     steps:
       - name: Run script with variable
         run: |
-          echo "${{ github.action }} "
-          echo "${{ github.action_path }} "
-          echo "${{ github.actor }} "
-          echo "${{ github.actor_id }} "
-          echo "${{ github.env }} "
-          echo "${{ github.job }} "
-          echo "${{ github.repository_id }} "
-          echo "${{ github.sha }} "
-          echo "${{ github.step_summary }} "
+          echo "${{ github.action }}"
+          echo "${{ github.actor }}"
+          echo "${{ github.job }}"
+          echo "${{ github.test_env}} "
         env:
           TEST_ENV: apply-2.0-for-test
