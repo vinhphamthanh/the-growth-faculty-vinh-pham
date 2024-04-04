@@ -13,6 +13,8 @@ jobs:
       - name: Check repo status
         run: |
           echo "${{ github.workspace }} is the working space. Check defaults"
+          echo "List all file in the workspace"
+          ls ${{ github.workspace }}
       - name: Run script before others
         run: |
           ./utils/greetings.sh
