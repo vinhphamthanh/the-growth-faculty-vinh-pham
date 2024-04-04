@@ -14,3 +14,9 @@ jobs:
           node-version: '20'
       - run: npm install -g bats
       - run: bats -v
+
+  PARALELL-JOB:
+    runs-on: window-latest
+    steps:
+      - name: Just check the windows runner
+        uses: actions/checkout@v4

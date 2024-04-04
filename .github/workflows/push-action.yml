@@ -1,6 +1,10 @@
 name: PUSH TO GITHUB # Workflow name
 run-name: List all the file in side the github workspace # Running name
-on: [push]
+on:
+  push:
+    branches-ignore:
+      - main
+
 jobs:
   Show-up-files:
     runs-on: ubuntu-latest
