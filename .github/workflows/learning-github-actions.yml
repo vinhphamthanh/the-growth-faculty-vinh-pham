@@ -23,8 +23,8 @@ jobs:
           echo "List all file in the workspace"
       - name: Run script inside 'utils' directory
         run: |
-          ./greetings.sh
-#          ./yahoo.sh
+          ./greeting.sh
+          ./yahoo.sh
 #      - run: npm install -g bats
 #      - run: bats -v
 
