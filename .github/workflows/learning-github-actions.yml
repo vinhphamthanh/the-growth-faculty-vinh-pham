@@ -34,6 +34,8 @@ jobs:
       run:
         working-directory: ./
     steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
       - name: Check workspace location with scripts
         run: ./greeting.sh
       - name: Run script with variable
