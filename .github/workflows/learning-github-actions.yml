@@ -38,6 +38,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Check workspace location with scripts
         run: ./greeting.sh
+      - name: Check the scripts inside 'utils' directory
+        run: ./utils/yahoo.sh
       - name: Run script with variable
         run: |
           echo "${{ github.action }}"
