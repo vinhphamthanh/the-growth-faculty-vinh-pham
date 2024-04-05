@@ -5,10 +5,10 @@ on: [push]
 jobs:
   Job1-and-1:
     runs-on: ubuntu-latest
-#    defaults:
-#      run:
+    defaults:
+      run:
 #        shell: bash
-#        working-directory: ./utils
+        working-directory: ./utils
     steps:
       - name: Check out branch
         uses: actions/checkout@v4
@@ -21,9 +21,9 @@ jobs:
           ls ${{ github.workspace }}
           echo "${{ github.workspace }} is the working space. Check defaults"
           echo "List all file in the workspace"
-#      - name: Run script before others
-#        run: |
-#          ./greetings.sh
+      - name: Run script inside 'utils' directory
+        run: |
+          ./greetings.sh
 #          ./yahoo.sh
 #      - run: npm install -g bats
 #      - run: bats -v
