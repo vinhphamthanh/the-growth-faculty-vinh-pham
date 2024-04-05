@@ -30,7 +30,7 @@ jobs:
           ./yahoo.sh
       - name: Check Custom Environment
         run: |
-          echo "Workflow global scope: ${{ DEV_NAME}}"
+          echo "Workflow global scope: $DEV_NAME"
 #      - run: npm install -g bats
 #      - run: bats -v
 
