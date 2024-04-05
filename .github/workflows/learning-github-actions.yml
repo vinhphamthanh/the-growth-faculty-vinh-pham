@@ -56,7 +56,7 @@ jobs:
           echo "${{ github.action }}"
           echo "${{ github.actor }}"
           echo "${{ github.job }}"
-          echo "${{ github.test_env}}"
+          ./utils/yahoo.sh
         env:
           TEST_ENV: apply-2.0-for-test
       - name: Dump env in Job2
