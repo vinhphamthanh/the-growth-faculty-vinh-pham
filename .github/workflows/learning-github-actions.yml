@@ -30,12 +30,17 @@ jobs:
 
   Job2-in-PARALELL:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./
     steps:
+      - name: Check workspace location with scripts
+        run: ./greeting.sh
       - name: Run script with variable
         run: |
           echo "${{ github.action }}"
           echo "${{ github.actor }}"
           echo "${{ github.job }}"
-          echo "${{ github.test_env}} "
+          echo "${{ github.test_env}}"
         env:
           TEST_ENV: apply-2.0-for-test
