@@ -31,6 +31,9 @@ jobs:
       - name: Check Custom Environment
         run: |
           echo "Workflow global scope: $DEV_NAME"
+          echo "Workflow local scope: $LOCAL_DEV_NAME"
+        env:
+          LOCAL_DEV_NAME: vinh.pham
 #      - run: npm install -g bats
 #      - run: bats -v
 
