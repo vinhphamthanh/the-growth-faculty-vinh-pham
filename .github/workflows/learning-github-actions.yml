@@ -34,7 +34,7 @@ jobs:
           echo "Workflow local scope: $LOCAL_DEV_NAME"
         env:
           LOCAL_DEV_NAME: vinh.pham
-      - name: List all default environment variables
+      - name: Dump all default environment variables in job1
         run: env
 #      - run: npm install -g bats
 #      - run: bats -v
@@ -59,3 +59,5 @@ jobs:
           echo "${{ github.test_env}}"
         env:
           TEST_ENV: apply-2.0-for-test
+      - name: Dump env in Job2
+        run: env
