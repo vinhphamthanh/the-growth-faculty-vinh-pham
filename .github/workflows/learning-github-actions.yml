@@ -61,3 +61,24 @@ jobs:
           TEST_ENV: apply-2.0-for-test
       - name: Dump env in Job2
         run: env
+  Job3-Save-Artifacts:
+    name: Save Output
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          expr 1 + 9 > artifacts-output.log
+      - name: Upload this artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifact-output-add-operator
+          path: artifacts-output.log
+
+  Job4-Download-Artifact:
+    name: Download artifact of add operator
+    runs-on: ubuntu-latest
+    needs: Job3-Save-Artifacts
+    steps:
+      - name: Download available artifact
+        uses: actions/download-artifact@v4
+
