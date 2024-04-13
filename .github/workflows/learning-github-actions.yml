@@ -81,4 +81,7 @@ jobs:
     steps:
       - name: Download available artifact
         uses: actions/download-artifact@v4
+        with:
+          name: artifact-output.log
+
 
