@@ -2,6 +2,7 @@ name: PASSING DATA BETWEEN JOBS IN A WORK FLOWS
 run-name: USING ARTIFACTS
 on:
   pull_request:
+  push:
     branches:
       - artifact
 jobs:
