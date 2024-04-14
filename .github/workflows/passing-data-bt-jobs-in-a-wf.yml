@@ -1,0 +1,51 @@
+name: PASSING DATA BETWEEN JOBS IN A WORK FLOWS
+run-name: USING ARTIFACTS
+on:
+  pull_request:
+    branches:
+      - artifact
+jobs:
+  addition:
+    name: Add 3 and 7
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          expr 3 + 7 > math-homework.txt
+      - name: Upload Artifact
+        uses: actions/upload_artifact@v4
+        with:
+          name: addition
+          path: math-homework.txt
+  multiply:
+    name: Multiply pre and 9
+    needs: addition # must wait for prev job finished successfully
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact from Addition
+        uses: actions/download_artifact@v4
+        with:
+          name: addition
+      - shell: bash
+        run: |
+          value=`cat math-homework.txt`
+          expr $value \* 9 > math-homework.txt
+      - name: Upload math result for Multiply
+        uses: actions/upload-artifact@v4
+        with:
+          name: multiplication
+          path: math-homework.txt
+  display_result:
+    name: Display the result of Math
+    needs: [addition, multiply]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download math result of multiplication
+        uses: actions/download-artifact@v4
+        with:
+          name: multiplication
+      - name: Display the result
+        shell: bash
+        run: |
+          value=`cat math-homework.txt`
+          echo "The final result is $value"
