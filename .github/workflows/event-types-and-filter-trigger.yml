@@ -1,0 +1,16 @@
+name: Filter & Event Type Trigger
+run-name: Using event type and filter to run workflow
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  Create-PR-to-main:
+    name: Create PR to main
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger CI if PR created to Main
+        uses: actions/checkout@v4
+        run: |
+          echo "Hello trigger event and filter"
+          echo "Thanks"
