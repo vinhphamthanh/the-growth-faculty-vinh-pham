@@ -1,6 +1,9 @@
 name: LEARNING GITHUB ACTIONS
 run-name: Discover bat version
-on: [push]
+on:
+  pull_request:
+    branches:
+      - learning-github-actions
 
 env:
   DEV_NAME: VinhPham
@@ -39,50 +42,51 @@ jobs:
 #      - run: npm install -g bats
 #      - run: bats -v
 
-  Job2-in-PARALELL:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./
-    steps:
-      - name: Checkout project
-        uses: actions/checkout@v4
-      - name: Check workspace location with scripts
-        run: ./greeting.sh
-      - name: Check the scripts inside 'utils' directory
-        run: ./utils/yahoo.sh
-      - name: Run script with variable
-        run: |
-          echo "${{ github.action }}"
-          echo "${{ github.actor }}"
-          echo "${{ github.job }}"
-          ./utils/yahoo.sh
-        env:
-          TEST_ENV: apply-2.0-for-test
-      - name: Dump env in Job2
-        run: env
-  Job3-Save-Artifacts:
-    name: Save Output
-    runs-on: ubuntu-latest
-    steps:
-      - shell: bash
-        run: |
-          expr 1 + 9 > artifacts-output.log
-      - name: Upload this artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: artifact-output-add-operator
-          path: artifacts-output.log
-
-  Job4-Download-Artifact:
-    name: Download artifact of add operator
-    runs-on: ubuntu-latest
-    needs: Job3-Save-Artifacts
-    steps:
-      - name: Download available artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: artifact-output-add-operator
-          path: artifacts-output.log
-
+#  Job2-in-PARALELL:
+#    runs-on: ubuntu-latest
+#    defaults:
+#      run:
+#        working-directory: ./
+#    steps:
+#      - name: Checkout project
+#        uses: actions/checkout@v4
+#      - name: Check workspace location with scripts
+#        run: ./greeting.sh
+#      - name: Check the scripts inside 'utils' directory
+#        run: ./utils/yahoo.sh
+#      - name: Run script with variable
+#        run: |
+#          echo "${{ github.action }}"
+#          echo "${{ github.actor }}"
+#          echo "${{ github.job }}"
+#          ./utils/yahoo.sh
+#        env:
+#          TEST_ENV: apply-2.0-for-test
+#      - name: Dump env in Job2
+#        run: env
+#  Job3-Save-Artifacts:
+#    name: Save Output
+#    runs-on: ubuntu-latest
+#    steps:
+#      - shell: bash
+#        run: |
+#          expr 1 + 9 > artifacts-output.log
+#      - name: Upload this artifact
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: artifact-output-add-operator
+#          path: artifacts-output.log
+#          retention-days: 1
+#
+#  Job4-Download-Artifact:
+#    name: Download artifact of add operator
+#    runs-on: ubuntu-latest
+#    needs: Job3-Save-Artifacts
+#    steps:
+#      - name: Download available artifact
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: artifact-output-add-operator
+#          path: artifacts-output.log
+#
 

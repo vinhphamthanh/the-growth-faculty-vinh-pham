@@ -2,7 +2,7 @@ name: PUSH TO GITHUB # Workflow name
 run-name: List all the file in side the github workspace # Running name
 on:
   push:
-    branches-ignore:
+    branches:
       - main
 
 jobs:
