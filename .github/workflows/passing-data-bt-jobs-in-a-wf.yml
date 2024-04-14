@@ -3,7 +3,7 @@ run-name: USING ARTIFACTS
 on:
   push:
     branches:
-      - artifact
+      - '**/artifact'
 jobs:
   addition:
     name: Add 3 and 7
@@ -17,6 +17,7 @@ jobs:
         with:
           name: addition
           path: math-homework.txt
+          retention-days: 1
   multiply:
     name: Multiply pre and 9
     needs: addition # must wait for prev job finished successfully
