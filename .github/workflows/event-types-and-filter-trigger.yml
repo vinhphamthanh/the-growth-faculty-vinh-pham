@@ -11,6 +11,7 @@ jobs:
     steps:
       - name: Trigger CI if PR created to Main
         uses: actions/checkout@v4
+      - name: Greeting user
         run: |
           echo "Hello trigger event and filter"
-          echo "Thanks"
+          echo "Thanks and see you"
