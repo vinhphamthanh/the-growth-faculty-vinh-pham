@@ -26,7 +26,7 @@ jobs:
     needs: GITHUB-CTX
     name: Check the event name
     runs-on: ubuntu-latest
-    if: ${{ github.event_name === 'push' }}
+    if: ${{ github.event_name == 'push' }}
     steps:
       - name: Dump event name if PUSH
         run: |
