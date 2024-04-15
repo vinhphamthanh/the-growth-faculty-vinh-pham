@@ -12,3 +12,12 @@ jobs:
       - name: Dump GITHUB-CTX
         run: |
           echo "GITHUB context: ${{ toJson(github) }}"
+  CHECK-EVENT-NAME:
+    name: Check the event name
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name === 'push' }}
+    steps:
+      - name: Dump event name if PUSH
+        run: |
+          echo "The event triggers this WF is push
+        
