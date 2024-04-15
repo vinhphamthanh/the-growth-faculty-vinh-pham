@@ -1,0 +1,14 @@
+name: CONTEXT DUMP LOGS
+run-name: Dump all the context in the GHAs
+on:
+  push:
+    branches:
+      - context
+jobs:
+  GITHUB-CTX:
+    name: Dump github context itself
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GITHUB-CTX
+        run: |
+          echo "GITHUB context: ${{ toJson(github) }}
