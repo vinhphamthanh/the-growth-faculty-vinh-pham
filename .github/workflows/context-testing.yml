@@ -30,5 +30,5 @@ jobs:
     steps:
       - name: Dump event name if PUSH
         run: |
-          echo "The event triggers this WF is push
+          echo "The event triggers this WF is push"
         
