@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: Dump GITHUB-CTX
         run: |
-          echo "GITHUB context: ${{ toJson(github) }}
+          echo "GITHUB context: ${{ toJson(github) }}"
