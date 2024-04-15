@@ -4,8 +4,18 @@ on:
   push:
     branches:
       - context
+defaults:
+  run:
+    working-directory: ./
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: true
 jobs:
   GITHUB-CTX:
+    permissions:
+      actions: none
+      pull-requests: read
+      id-token: none
     name: Dump github context itself
     runs-on: ubuntu-latest
     steps:
@@ -13,6 +23,7 @@ jobs:
         run: |
           echo "GITHUB context: ${{ toJson(github) }}"
   CHECK-EVENT-NAME:
+    needs: GITHUB-CTX
     name: Check the event name
     runs-on: ubuntu-latest
     if: ${{ github.event_name === 'push' }}
