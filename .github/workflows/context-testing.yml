@@ -31,4 +31,8 @@ jobs:
       - name: Dump event name if PUSH
         run: |
           echo "The event triggers this WF is push"
+      - name: Check commit lint
+        run: |
+          echo "Commit from::: ${{ github.event.push.head.sha }}~${{ github.event.push.commits}}"
+          echo "Commit to::: ${{ github.event.push.head.sha }}"
         
