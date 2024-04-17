@@ -35,4 +35,12 @@ jobs:
         run: |
           echo "Commit from::: ${{ github.sha }}~${{ github.event.commits}}"
           echo "Commit to::: ${{ github.sha }}"
+  DUMP_VARIABLES_ON_REPOS:
+    needs: CHECK-EVENT-NAME
+    name: Dump variables on repos
+    runs-on: ubuntu-latest
+    steps:
+      - name: Find the vars object value
+        run: |
+          echo "Variables on the repo: ${{ vars }}"
         
